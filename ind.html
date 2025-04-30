@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Account - Emmzok</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fbeaff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      h1, h2 {
+        color: #333;
+        text-align: center;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #ff1493;
+      }
+
+      img {
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      .contact-link {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EMMZOK</h1>
+    <h2>Welcome to Emmzok</h2>
+
+    <form id="createAccountForm">
+      <label>First Name:</label>
+      <input type="text" name="firstName" placeholder="Enter your first name" required>
+
+      <label>Last Name:</label>
+      <input type="text" name="lastName" placeholder="Enter your last name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Enter your email address" required>
+
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="">-- Select --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+      </select>
+
+      <label>Age:</label>
+      <input type="number" name="age" placeholder="Enter your age" min="10" required>
+
+      <label>Birthday:</label>
+      <input type="date" name="birthday" required>
+
+      <button type="submit">Create Account</button>
+      <h4>already have an account. <a href="yes.html">Login</a></h4>
+    </form id="createAccountForm">
+
+    <a href="/IMG.jpg"><img src="IMG.jpg" width="200" alt="EMMZOK image"></a>
+
+    <footer>2025 &copy; Emmanuel</footer>
+    <br>
+    <a href="mailto:emmanuelbankoleowoeye@gmail.com">Contact Me</a>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
