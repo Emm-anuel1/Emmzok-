@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head>
   <style>
     body {
-      background-color: lightpink;
-      background-size: 100px;
+      background-size: 200px;
+      max-width: ;
+      width: 100%;
     }
 
     @keyframes fadeIn {
@@ -129,22 +130,18 @@
         padding: 20px 30px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        max-width: 330px;
-        width: 280px;
         margin-bottom: 20px;
-        align-items: center;
-        
+       background-position: center;
       }
 
       label {
         display: block;
         margin-top: 15px;
         font-weight: bold;
-        text-align: left;
       }
 
       input, select {
-        width: 260px;
+        width: 100%;
         padding: 10px;
         margin-top: 5px;
         border-radius: 5px;
@@ -153,7 +150,7 @@
 
       button {
         margin-top: 20px;
-        width: 100px;
+        width: 100%;
         padding: 12px;
         background-color: #ff69b4;
         color: blue;
@@ -165,6 +162,7 @@
 
       button:hover {
         background-color: #ff1493;
+        width: 100px;
       }
   
 
@@ -237,7 +235,7 @@
     </div>
   </div>
 
-  <h3>Contact us</h3>
+  <h4>Contact us</h4>
   <form id="contactform" action="/submit" method="POST">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
@@ -262,7 +260,7 @@
 
   <footer>2025 &copy; Emmanuel</footer>
 
-  <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+  <buttonhover onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
   <script>
     var topButton = document.getElementById("topBtn");

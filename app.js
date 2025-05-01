@@ -1,6 +1,7 @@
 // Import the Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -17,6 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const auth = getAuth();
 
 // Form handling
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,33 +30,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstName = form.firstName.value.trim();
     const lastName = form.lastName.value.trim();
     const email = form.email.value.trim();
+    const password = form.password.value.trim();
     const gender = form.gender.value;
     const age = form.age.value;
     const birthday = form.birthday.value;
 
-    if (!firstName || !lastName || !email || !gender || !age || !birthday) {
+    // Validate form input
+    if (!firstName || !lastName || !email || !password || !gender || !age || !birthday) {
       alert("Please fill in all fields.");
       return;
     }
 
-    const newUserRef = push(ref(db, "contactform"));
+    // Create user with Firebase Authentication
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Get the user from the auth response
+        const user = userCredential.user;
 
-    set(newUserRef, {
-      firstName,
-      lastName,
-      email,
-      gender,
-      age,
-      birthday
-    })
-      .then(() => {
-        alert("Account created successfully!");
-        form.reset();
-        window.location.href = "success.html"; // Replace with your target page
+        // Store additional user data in Firebase Realtime Database
+        const newUserRef = push(ref(db, "users"));
+        set(newUserRef, {
+          firstName,
+          lastName,
+          email,
+          gender,
+          age,
+          birthday,
+          uid: user.uid
+        })
+          .then(() => {
+            alert("Account created successfully!");
+            form.reset();
+            window.location.href = "success.html"; // Redirect after success
+          })
+          .catch((error) => {
+            alert("Error: " + error.message);
+            console.error("Firebase Database Error:", error);
+          });
       })
       .catch((error) => {
         alert("Error: " + error.message);
-        console.error("Firebase Error:", error);
+        console.error("Firebase Auth Error:", error);
       });
   });
 });
